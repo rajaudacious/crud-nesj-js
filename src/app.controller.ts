@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 import { User } from './user.models';
 import { UserUpdateDto } from './userUpdate.dto';
@@ -7,8 +7,9 @@ import { UserUpdateDto } from './userUpdate.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+ @UsePipes(ValidationPipe) 
  @Post()
- async createUser(@Body() userDto: User){
+ async createUser(@Body() userDto:UserUpdateDto) :Promise<User>{
   return this.appService.createUser(userDto)
  }
 
@@ -17,8 +18,13 @@ export class AppController {
   return this.appService.readUser()
  }
 
+ @Get(':id')
+ async getUser(@Param('id') id: string):Promise<User>{
+  return this.appService.getUser(id);
+ }
+
  @Put(':id')
- async updateUser(@Param('id') id: string, @Body() updateData:UserUpdateDto)
+ async updateUser(@Param('id',new ValidationPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: string, @Body() updateData:UserUpdateDto)
  :Promise<User>{
   return this.appService.updateUser(id,updateData)
  }
