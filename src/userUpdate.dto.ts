@@ -1,13 +1,13 @@
-import { IsDate, IsNumber, IsString, } from "class-validator";
+// import { IsDate, IsNumber, IsString, } from "class-validator";
 
-export class UserUpdateDto{
+// export class UserUpdateDto{
 
-    @IsString()
-    name: string;
+//     @IsString()
+//     name: string;
 
-    @IsString()
-    description: string;
+//     @IsString()
+//     description: string;
 
-    // @IsDate()
-    dateAdded: Date;
-}
+//     // @IsDate()
+//     dateAdded: Date;
+// }
