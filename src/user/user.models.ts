@@ -11,6 +11,9 @@ export class User {
     @Prop()
     description: string;
 
+    @Prop()
+    password: string;
+
     @Prop({default:Date.now})
     dateAdded: Date;
 }

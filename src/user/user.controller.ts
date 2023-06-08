@@ -13,6 +13,11 @@ export class UserController {
   return this.userService.createUser(userDto)
  }
 
+ @Post('login')
+ loginUser(@Body() UserUpdateDto: Record<string, any>) {
+    return this.userService.loginUser(UserUpdateDto.name, UserUpdateDto.password);
+  }
+
  @Get('all')
  readUser(){
   return this.userService.readUser()
