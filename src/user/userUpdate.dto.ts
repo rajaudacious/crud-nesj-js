@@ -8,6 +8,5 @@ export class UserUpdateDto{
     @IsString()
     description: string;
 
-    // @IsDate()
     dateAdded: Date;
 }

@@ -1,5 +1,4 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
-// import { User } from './user.models';
 import { User } from "../user/user.models";
 import { UserUpdateDto } from "../user/userUpdate.dto";
 import { UserService } from './user.service';
